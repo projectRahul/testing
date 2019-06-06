@@ -14,3 +14,16 @@ var PatientSchema = new Schema({
 });
 
 module.exports = mongoose.model('patient', PatientSchema);
+
+
+
+
+// var PatientMedicationSchema = new Schema({
+//   unique_num: {type: String},
+//   drug: {type: String},
+//   dose: {type: String},
+//   strength: {type: String},
+//   report_date: {type: String},
+// });
+
+// module.exports = mongoose.model('medication', PatientMedicationSchema);

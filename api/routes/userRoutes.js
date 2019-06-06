@@ -17,4 +17,10 @@ var patient = require('../controllers/patientController');
 
     app.route('/searchPatient')
     .post(patient.searchPatient);
+
+    app.route('/getPatientDetails')
+    .post(patient.getPatientDetails);
+
+    // app.route('/getPatientMedicationDetails')
+    // .post(patient.getPatientMedicationDetails);
 };

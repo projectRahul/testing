@@ -1,0 +1,499 @@
+/* 1 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e0ef"),
+    "unique_num" : "1",
+    "drug" : "asprin",
+    "dose" : "2 times a day",
+    "strength" : "500 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e0f1"),
+    "unique_num" : "1",
+    "drug" : "asthama",
+    "dose" : "3 times a day",
+    "strength" : "600 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 3 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e0f3"),
+    "unique_num" : "1",
+    "drug" : "hypertension",
+    "dose" : "4 times a day",
+    "strength" : "200 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 4 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e0f5"),
+    "unique_num" : "1",
+    "drug" : "highBP",
+    "dose" : "5 times a day",
+    "strength" : "100 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 5 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e0f7"),
+    "unique_num" : "1",
+    "drug" : "asprin",
+    "dose" : "6 times a day",
+    "strength" : "500 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 6 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e0f9"),
+    "unique_num" : "1",
+    "drug" : "hypertension",
+    "dose" : "7 times a day",
+    "strength" : "600 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 7 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e0fb"),
+    "unique_num" : "1",
+    "drug" : "asprin",
+    "dose" : "8 times a day",
+    "strength" : "700 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 8 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e0fd"),
+    "unique_num" : "1",
+    "drug" : "hypertension",
+    "dose" : "9 times a day",
+    "strength" : "800 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 9 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e0ff"),
+    "unique_num" : "1",
+    "drug" : "asthama",
+    "dose" : "10 times a day",
+    "strength" : "500 mg",
+    "report_date" : "12/08/2012"
+}
+
+/* 10 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e101"),
+    "unique_num" : "1",
+    "drug" : "asprin",
+    "dose" : "11 times a day",
+    "strength" : "500 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 11 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e103"),
+    "unique_num" : "1",
+    "drug" : "hypertension",
+    "dose" : "12 times a day",
+    "strength" : "500 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 12 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e105"),
+    "unique_num" : "1",
+    "drug" : "asthama",
+    "dose" : "13 times a day",
+    "strength" : "200 mg",
+    "report_date" : "12/08/2012"
+}
+
+/* 13 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e107"),
+    "unique_num" : "1",
+    "drug" : "asprin",
+    "dose" : "14 times a day",
+    "strength" : "100 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 14 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e109"),
+    "unique_num" : "1",
+    "drug" : "hypertension",
+    "dose" : "15 times a day",
+    "strength" : "400 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 15 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e10b"),
+    "unique_num" : "1",
+    "drug" : "asthama",
+    "dose" : "16 times a day",
+    "strength" : "500 mg",
+    "report_date" : "12/08/2012"
+}
+
+/* 16 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e10d"),
+    "unique_num" : "1",
+    "drug" : "hypertension",
+    "dose" : "17 times a day",
+    "strength" : "500 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 17 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e10f"),
+    "unique_num" : "1",
+    "drug" : "asprin",
+    "dose" : "18 times a day",
+    "strength" : "400 mg",
+    "report_date" : "12/08/2012"
+}
+
+/* 18 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e111"),
+    "unique_num" : "1",
+    "drug" : "hypertension",
+    "dose" : "19 times a day",
+    "strength" : "400 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 19 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e113"),
+    "unique_num" : "1",
+    "drug" : "highBP",
+    "dose" : "20 times a day",
+    "strength" : "400 mg",
+    "report_date" : "12/08/2012"
+}
+
+/* 20 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e115"),
+    "unique_num" : "1",
+    "drug" : "asthama",
+    "dose" : "21 times a day",
+    "strength" : "400 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 21 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e117"),
+    "unique_num" : "1",
+    "drug" : "highBP",
+    "dose" : "22 times a day",
+    "strength" : "300 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 22 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e119"),
+    "unique_num" : "1",
+    "drug" : "hypertension",
+    "dose" : "23 times a day",
+    "strength" : "300 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 23 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e11b"),
+    "unique_num" : "1",
+    "drug" : "asprin",
+    "dose" : "24 times a day",
+    "strength" : "300 mg",
+    "report_date" : "12/08/2012"
+}
+
+/* 24 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e11d"),
+    "unique_num" : "1",
+    "drug" : "highBP",
+    "dose" : "25 times a day",
+    "strength" : "300 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 25 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e11f"),
+    "unique_num" : "1",
+    "drug" : "hypertension",
+    "dose" : "26 times a day",
+    "strength" : "300 mg",
+    "report_date" : "12/08/2012"
+}
+
+/* 26 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e121"),
+    "unique_num" : "2",
+    "drug" : "asprin",
+    "dose" : "2 times a day",
+    "strength" : "500 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 27 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e123"),
+    "unique_num" : "2",
+    "drug" : "asthama",
+    "dose" : "3 times a day",
+    "strength" : "600 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 28 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e125"),
+    "unique_num" : "2",
+    "drug" : "hypertension",
+    "dose" : "4 times a day",
+    "strength" : "200 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 29 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e127"),
+    "unique_num" : "2",
+    "drug" : "highBP",
+    "dose" : "5 times a day",
+    "strength" : "100 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 30 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e129"),
+    "unique_num" : "2",
+    "drug" : "asprin",
+    "dose" : "6 times a day",
+    "strength" : "500 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 31 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e12b"),
+    "unique_num" : "2",
+    "drug" : "hypertension",
+    "dose" : "7 times a day",
+    "strength" : "600 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 32 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e12d"),
+    "unique_num" : "2",
+    "drug" : "asprin",
+    "dose" : "8 times a day",
+    "strength" : "700 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 33 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e12f"),
+    "unique_num" : "2",
+    "drug" : "hypertension",
+    "dose" : "9 times a day",
+    "strength" : "800 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 34 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e131"),
+    "unique_num" : "2",
+    "drug" : "asthama",
+    "dose" : "10 times a day",
+    "strength" : "500 mg",
+    "report_date" : "12/08/2012"
+}
+
+/* 35 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e133"),
+    "unique_num" : "2",
+    "drug" : "asprin",
+    "dose" : "11 times a day",
+    "strength" : "500 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 36 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e135"),
+    "unique_num" : "2",
+    "drug" : "hypertension",
+    "dose" : "12 times a day",
+    "strength" : "500 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 37 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e137"),
+    "unique_num" : "2",
+    "drug" : "asthama",
+    "dose" : "13 times a day",
+    "strength" : "200 mg",
+    "report_date" : "12/08/2012"
+}
+
+/* 38 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e139"),
+    "unique_num" : "2",
+    "drug" : "asprin",
+    "dose" : "14 times a day",
+    "strength" : "100 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 39 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e13b"),
+    "unique_num" : "2",
+    "drug" : "hypertension",
+    "dose" : "15 times a day",
+    "strength" : "400 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 40 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e13d"),
+    "unique_num" : "2",
+    "drug" : "asthama",
+    "dose" : "16 times a day",
+    "strength" : "500 mg",
+    "report_date" : "12/08/2012"
+}
+
+/* 41 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e13f"),
+    "unique_num" : "2",
+    "drug" : "hypertension",
+    "dose" : "17 times a day",
+    "strength" : "500 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 42 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e141"),
+    "unique_num" : "2",
+    "drug" : "asprin",
+    "dose" : "18 times a day",
+    "strength" : "400 mg",
+    "report_date" : "12/08/2012"
+}
+
+/* 43 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e143"),
+    "unique_num" : "2",
+    "drug" : "hypertension",
+    "dose" : "19 times a day",
+    "strength" : "400 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 44 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e145"),
+    "unique_num" : "2",
+    "drug" : "highBP",
+    "dose" : "20 times a day",
+    "strength" : "400 mg",
+    "report_date" : "12/08/2012"
+}
+
+/* 45 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e147"),
+    "unique_num" : "2",
+    "drug" : "asthama",
+    "dose" : "21 times a day",
+    "strength" : "400 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 46 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e149"),
+    "unique_num" : "2",
+    "drug" : "highBP",
+    "dose" : "22 times a day",
+    "strength" : "300 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 47 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e14b"),
+    "unique_num" : "2",
+    "drug" : "hypertension",
+    "dose" : "23 times a day",
+    "strength" : "300 mg",
+    "report_date" : "12/12/2012"
+}
+
+/* 48 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e14d"),
+    "unique_num" : "2",
+    "drug" : "asprin",
+    "dose" : "24 times a day",
+    "strength" : "300 mg",
+    "report_date" : "12/08/2012"
+}
+
+/* 49 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e14f"),
+    "unique_num" : "2",
+    "drug" : "highBP",
+    "dose" : "25 times a day",
+    "strength" : "300 mg",
+    "report_date" : "08/12/2012"
+}
+
+/* 50 */
+{
+    "_id" : ObjectId("5cf5feb8acdc55fc84a7e151"),
+    "unique_num" : "2",
+    "drug" : "hypertension",
+    "dose" : "26 times a day",
+    "strength" : "300 mg",
+    "report_date" : "12/08/2012"
+}
