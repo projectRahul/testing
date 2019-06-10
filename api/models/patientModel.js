@@ -9,21 +9,8 @@ var PatientSchema = new Schema({
   email: {type: String},
   dob: {type: String},
   address: {type: String},
-  image: {type: String},
-  unique_no: {type: Number,default: ''},
+  image: {type: String,default: ''},
+  unique_num: {type: Number,default: ''},
 });
 
 module.exports = mongoose.model('patient', PatientSchema);
-
-
-
-
-// var PatientMedicationSchema = new Schema({
-//   unique_num: {type: String},
-//   drug: {type: String},
-//   dose: {type: String},
-//   strength: {type: String},
-//   report_date: {type: String},
-// });
-
-// module.exports = mongoose.model('medication', PatientMedicationSchema);

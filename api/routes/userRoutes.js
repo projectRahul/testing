@@ -1,7 +1,11 @@
 'use strict';
+var multer = require('multer');
+var upload = multer({dest:'upload/'});
+
 module.exports = function(app) {
 var userList = require('../controllers/userController');
 var patient = require('../controllers/patientController');
+var patientMedication = require('../controllers/patientMedicationController');
 
   app.route('/user')
     .get(userList.list_all_user)
@@ -20,7 +24,12 @@ var patient = require('../controllers/patientController');
 
     app.route('/getPatientDetails')
     .post(patient.getPatientDetails);
+    
+    app.route('/addNewPatient',upload.single('image'))
+    .post(patient.addNewPatient);
 
-    // app.route('/getPatientMedicationDetails')
-    // .post(patient.getPatientMedicationDetails);
+    app.route('/getPatientMedicationDetails')
+    .post(patientMedication.getPatientMedicationDetails);
+
 };
+// upload.single('image')

@@ -25,11 +25,20 @@ exports.getPatientDetails = function(req, res) {
 };
 
 
-// exports.getPatientMedicationDetails = function(req, res) {
-//   res.json(req.body);
-  // PatientMedication.find(req.body, function(err, medication_data) {
+exports.addNewPatient = function(req, res, next) {
+  console.log(req.file);
+  res.json(req.params);
+  // var new_patient = new Patient(req.body);
+  
+  // Patient.find({"unique_num" : req.body.unique_num}, function(err, patient_data) {
   //   if (err)
   //     res.send(err);
-  //   res.json(medication_data);
+  //   if(patient_data.length != 0){
+  //     res.json({"status":"0"});
+  //   }else{
+  //     new_patient.save(function(err, patient_data) {
+  //       res.json({"status":"1"});
+  //     });
+  //   }
   // });
-// };
+};
