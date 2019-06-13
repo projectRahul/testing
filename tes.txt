@@ -1,0 +1,183 @@
+import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Ihome } from './../IHome';
+import { HomeService } from './../home.service';
+import { NotifierService } from 'angular-notifier';
+
+
+@Component({
+  selector: 'app-add-patient',
+  templateUrl: './add-patient.component.html',
+  styleUrls: ['./add-patient.component.css']
+})
+export class AddPatientComponent implements OnInit {
+  
+  private readonly notifier: NotifierService;
+  addPatientForm : FormGroup;
+  inputText : string ='';
+  selectedFile : File = null;
+
+  constructor(private apf: FormBuilder,
+  			private router: Router,
+  			private home_service : HomeService,
+        private notifierService: NotifierService) 
+  {
+      this.notifier = notifierService;
+  }
+
+  ngOnInit() {
+  	this.addPatientForm = this.apf.group({
+  		unique_num: ['',[Validators.required]],
+  		name: ['',[Validators.required]],
+  		email: ['',Validators.compose([Validators.required,Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')])],
+  		mobile: ['',Validators.compose([Validators.required,Validators.pattern('[1-9]{1}[0-9]{9}')])],
+  		address: ['',[Validators.required]],
+      dob: ['',[Validators.required]],
+  		avat: [''],
+  	});
+  }
+
+  onFileSelected(event){
+    console.log(event);
+    this.selectedFile = event.target.files[0];
+  }
+
+  onSubmit(){
+    
+    // this.addPatientForm.append('avat',this.selectedFile, this.selectedFile.name);
+    this.addPatientForm.value.avat = this.selectedFile;
+    this.addPatientForm.value.dob = convertDateFormat(this.addPatientForm.value.dob);
+    
+    let formdata = <object>this.addPatientForm.value;
+    console.log(formdata);
+
+    this.home_service.addNewPatient(<any>formdata)
+      .subscribe( data => {
+        console.log(data.status);
+      	if(data.status == '1'){
+     		  this.notifier.notify( 'success', 'Patient Added Successfully' );
+        }else{
+        	this.notifier.notify( 'danger', 'Patient Already Exists' );
+        }
+    });
+  }
+
+}
+
+
+function convertDateFormat(str) {
+    var date = new Date(str),
+        mnth = ("0" + (date.getMonth()+1)).slice(-2),
+        day  = ("0" + date.getDate()).slice(-2);
+    return [ date.getFullYear(), mnth, day ].join("-");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<app-shared></app-shared>
+<div class="container">
+  <div class="row">
+    <div class="Absolute-Center is-Responsive">
+      <div class="col-sm-12">
+		 <form class="form-horizontal" [formGroup]="addPatientForm" (ngSubmit)="onSubmit()"  enctype="multipart/form-data">
+		 	<div class="panel panel-primary">
+		 		<div class="panel-heading">
+
+		 			<h3 class="panel-title"><strong class="strong-css">Add Patient</strong></h3>
+		 		</div>
+		 		<div class="panel-body">
+		 			<notifier-container></notifier-container>
+		 			<div class="form-group"  [ngClass] = "{'has-error' : addPatientForm.get('unique_num').errors  && (addPatientForm.get('unique_num').touched || addPatientForm.get('unique_num').dirty)}">
+		 				<label class="col-sm-2 control-label">Uni. No.*</label>
+		 				<div class="col-sm-8">
+		 					<input type="text" id="unique_num" formControlName="unique_num" name="unique_num" class="form-control" [(ngModel)]="inputText">{{ inputText }}
+		 					<span *ngIf="addPatientForm.get('unique_num').errors && (addPatientForm.get('unique_num').touched || addPatientForm.get('unique_num').dirty)">Unique Number is required</span>
+		 				</div>
+		 			</div>
+		 			<div class="form-group"  [ngClass] = "{'has-error' : addPatientForm.get('name').errors  && (addPatientForm.get('name').touched || addPatientForm.get('name').dirty)}">
+		 				<label class="col-sm-2 control-label">Name*</label>
+		 				<div class="col-sm-8">
+		 					<input type="text" id="name" formControlName="name" name="name" class="form-control">
+		 					<span *ngIf="addPatientForm.get('name').errors && (addPatientForm.get('name').touched || addPatientForm.get('name').dirty)">Full name is required</span>
+		 				</div>
+		 			</div>
+		 			<div class="form-group"  [ngClass] = "{'has-error' : addPatientForm.get('email').errors  && (addPatientForm.get('email').touched || addPatientForm.get('email').dirty)}">
+		 				<label class="col-sm-2 control-label">Email*</label>
+		 				<div class="col-sm-8">
+		 					<input type="text" id="email" formControlName="email" name="email" class="form-control">
+		 					<span *ngIf="addPatientForm.get('email').errors && (addPatientForm.get('email').touched || addPatientForm.get('email').dirty)">Email is required</span>
+		 				</div>
+		 			</div>
+		 			<div class="form-group"  [ngClass] = "{'has-error' : addPatientForm.get('mobile').errors  && (addPatientForm.get('mobile').touched || addPatientForm.get('mobile').dirty)}">
+		 				<label class="col-sm-2 control-label">Mobile*</label>
+		 				<div class="col-sm-8">
+		 					<input type="text" id="mobile" formControlName="mobile" name="mobile" class="form-control">
+		 					<span *ngIf="addPatientForm.get('mobile').errors && (addPatientForm.get('mobile').touched || addPatientForm.get('mobile').dirty)">Only 10 digit mobile number is accepted</span>
+		 				</div>
+		 			</div> 
+		 			<div class="form-group"  [ngClass] = "{'has-error' : addPatientForm.get('dob').errors  && (addPatientForm.get('dob').touched || addPatientForm.get('dob').dirty)}">
+		 				<label class="col-sm-2 control-label">DOB*</label>
+		 				<div class="col-sm-8">
+		 					<input type="text" id="dob" formControlName="dob" name="dob" class="form-control" bsDatepicker >
+		 					<span *ngIf="addPatientForm.get('dob').errors && (addPatientForm.get('dob').touched || addPatientForm.get('dob').dirty)">DOB is required</span>
+		 				</div>
+		 			</div>
+		 			<div class="form-group"  [ngClass] = "{'has-error' : addPatientForm.get('address').errors  && (addPatientForm.get('address').touched || addPatientForm.get('address').dirty)}">
+		 				<label class="col-sm-2 control-label">Address*</label>
+		 				<div class="col-sm-8">
+		 					<input type="text" id="address" formControlName="address" name="address" class="form-control">
+		 					<span *ngIf="addPatientForm.get('address').errors && (addPatientForm.get('address').touched || addPatientForm.get('address').dirty)">Address is required</span>
+		 				</div>
+		 			</div>
+		 			<div class="form-group">
+		 				<label class="col-sm-2 control-label">Image</label>
+		 				<div class="col-sm-8">
+		 					<input type="file" id="avat" formControlName="avat" name="avat" class="form-control" (change)="onFileSelected($event)">
+		 				</div>
+		 			</div>
+		 		</div>
+		 		<div class="panel-footer">
+		 			<div class="btn-toolbar">
+			 			<button class="btn btn-primary" type="submit" [disabled]="addPatientForm.invalid">Add</button>
+			 			<button class="btn btn-primary" type="reset" value="Reset">Cancel</button>
+			 		</div>
+		 		</div>
+		 	</div>
+		 </form>
+		</div>
+	</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
