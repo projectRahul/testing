@@ -11,6 +11,8 @@ Patient = require('./api/models/patientModel'), //created model loading here
 PatientMedication = require('./api/models/patientMedicationModel'), //created model loading here
 bodyParser = require('body-parser');
 
+mongoose.set('useCreateIndex', true);
+
 app.use(cors());
 
 // mongoose instance connection url connection
