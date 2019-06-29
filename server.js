@@ -9,6 +9,7 @@ mongoose = require('mongoose'),
 User = require('./api/models/userModel'), //created model loading here
 Patient = require('./api/models/patientModel'), //created model loading here
 PatientMedication = require('./api/models/patientMedicationModel'), //created model loading here
+PatientMedicationAcc = require('./api/models/patientMedicationAccModel'), //created model loading here
 bodyParser = require('body-parser');
 
 mongoose.set('useCreateIndex', true);

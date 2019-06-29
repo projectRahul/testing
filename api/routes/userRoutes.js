@@ -25,39 +25,33 @@ module.exports = function(app) {
 var userList = require('../controllers/userController');
 var patient = require('../controllers/patientController');
 var patientMedication = require('../controllers/patientMedicationController');
+var patientMedicationAcc = require('../controllers/patientMedicationAccController');
+var admin = require('../controllers/adminController');
 
 
-  app.route('/user/login')
-  .post(userList.login_user);//Login user
-    
-  // app.post('/searchPatient',verifyToken,function(req, res, next) {    
-  //   jwt.verify(req.token,'secretkey',(errr,authData)=>{
-  //     if (errr){ 
-  //       res.sendStatus(403); 
-  //     }else{
-  //       var searchArray = new Object();
-  //       searchArray[req.body.searchwith] = req.body.searchValue;
-  //       Patient.find(searchArray, function(err, patient_data) {
-  //         if (err){ res.send(err); }
-  //         res.json(patient_data);
-  //       });
-  //     }
-  //   });
-  // });
+  app.post('/getCollectionList',function(req, res, next) {
+    mongoose.connection.db.listCollections().toArray(function(err, names) {
+      let data = [];
+      let i=0;
+      names.forEach(function(e,i,a) {
+          data[i]=e.name;
+          i++;
+      });
+      res.json({status : true , message : 'Collection found' , data : data});
+    });
+  });
+  
+  app.post('/user/login', userList.login_user);
 
-  app.route('/searchPatient')
-   .post(patient.searchPatient);
+  app.post('/searchPatient', verifyToken, patient.searchPatient);
 
+  app.post('/getPatientDetails', verifyToken, patient.getPatientDetails);    
 
-  app.route('/getPatientDetails')
-  .post(patient.getPatientDetails);
-    
+  app.post('/getPatientMedicationDetails', verifyToken, patientMedication.getPatientMedicationDetails);
+  
+  app.post('/getPatientMedicationAccDetails', verifyToken, patientMedicationAcc.getPatientMedicationAccDetails);
 
-  app.route('/getPatientMedicationDetails')
-  .post(patientMedication.getPatientMedicationDetails);
-
-
-
+  app.post('/getDrugDropdown', verifyToken, patientMedication.getDrugDropdown);    
 
   app.post('/addNewPatient',upload.single('image'),function(req, res, next) {
     if(req.body.image !=='undefined'){
@@ -82,11 +76,15 @@ var patientMedication = require('../controllers/patientMedicationController');
       const bearer = bearerHeader.split(' ');
       const bearerToken = bearer[1];
       //set token
-      req.token = bearerToken;
-      //Next middleware
-      next();
+      if(bearerToken != 'null'){
+        req.token = bearerToken;
+        //Next middleware
+        next();
+      }else{
+        res.json({status : false , message : 'Authorization failed'});
+      }
     }else{
-      res.sendStatus(403);
+      res.json({status : false , message : 'Authorization failed'});
     }
   }
 
