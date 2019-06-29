@@ -1,0 +1,16 @@
+.tab-list-view{
+    width: 80%;
+    float: right;
+    margin-top: -17%;
+}
+
+.table-border {
+	border: none;
+	border-top : 0px;
+	width:15%;
+}
+
+.table-bold {
+	font-weight: bolder;
+	width:2%
+}

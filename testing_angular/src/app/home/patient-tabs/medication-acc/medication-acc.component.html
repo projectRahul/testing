@@ -1,0 +1,58 @@
+<app-patient-tabs></app-patient-tabs>
+
+<div class="container">
+    <div class="row">
+		<div class="col-xs-12 tab-list-view">
+			<div class="tab-content">
+				<div class="tab-pane active">                
+					
+				  <h2>Medication Accordian</h2>
+				  <p></p> 
+				  <form>
+				  	<div class="row filter">
+					  	<div class="col-md-4">
+					  		<b> Select Drug : </b>
+							<select class="soflow" *ngIf= "dropdown_data !=''" (change)="drugDropdownOnChange($event)">
+							  	<option value='' selected >Select Drug</option>
+							 	<option *ngFor="let dropdown of dropdown_data; let counter=index" [value]="dropdown">{{dropdown}}</option>
+							</select>
+					  	</div>
+					  	<!-- <button type="button" class="btn btn-primary">Submit</button> -->
+					</div>
+				  </form>
+
+				  <div *ngFor="let medications of patient_medication_data;">
+					<accordion>
+				        <accordion-group>
+				            <accordion-heading>
+				                DRUG : {{medications[0].drug | uppercase}}
+				            </accordion-heading>
+				            
+				            <table class="table table-bordered" *ngIf="patient_medication_data != ''">
+							    <thead>
+							      <tr>
+							        <th class="text-center">Sno.</th>
+							        <th class="text-center">Dose</th>
+							        <th class="text-center">Strength</th>
+							        <th class="text-center">Report Date</th>
+							      </tr>
+							    </thead>
+							    <tbody>
+							      <tr *ngFor="let medication_record of medications; let j = index" class="text-center" >
+							        <td>{{j+1}}</td>
+							        <td>{{medication_record.dose}}</td>
+							        <td>{{medication_record.strength}}</td>
+							        <td>{{medication_record.report_date}}</td>
+							      </tr>
+							    </tbody>
+							  </table>
+
+
+				        </accordion-group>
+				    </accordion>
+				   </div>
+				</div> 				
+			</div>
+		</div>
+	</div>
+</div>
