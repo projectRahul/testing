@@ -1,38 +1,39 @@
-<app-shared></app-shared>
-<div class="position-searchbox">
-	<div class="container">
-	  <div class="row">
-	    <div class="Absolute-Center is-Responsive">
-	      <div class="col-sm-12 col-md-10 col-md-offset-1">
-			 <form id="form_login" class="form-horizontal" [formGroup]="patientForm" (submit)="searchwith('name')">
-			 	<div class="panel panel-primary">
-			 		<div class="panel-heading">
+<app-shared>
+	<div class="position-searchbox header_content">
+		<div class="container">
+		  <div class="row">
+		    <div class="Absolute-Center is-Responsive">
+		      <div class="col-sm-12 col-md-10 col-md-offset-1">
+				 <form id="form_login" class="form-horizontal" [formGroup]="patientForm" (submit)="searchwith('name')">
+				 	<div class="panel panel-primary">
+				 		<div class="panel-heading">
 
-			 			<h3 class="panel-title"><strong class="strong-css">Search Patient</strong></h3>
-			 		</div>
-			 		<div class="panel-body">
-			 			<div class="form-group">
-			 				<label class="col-sm-2 control-label">Search</label>
-			 				
+				 			<h3 class="panel-title"><strong class="strong-css">Search Patient</strong></h3>
+				 		</div>
+				 		<div class="panel-body">
+				 			<div class="form-group">
+				 				<label class="col-sm-2 control-label">Search</label>
+				 				
 
-			 				<div class="col-sm-8">
-			 					<div class="dropdown">
-			 						<input type="text" placeholder="Search" formControlName="search" name="search" class="form-control" #searchValue  (focus)="showDropdown()">
-			 						<div id="myDropdown" class="dropdown-content">
-									    <a (click)="searchwith(searchValue.value,'name')">Name</a>
-									    <a (click)="searchwith(searchValue.value,'unique_no')">Unique No.</a>
+				 				<div class="col-sm-8">
+				 					<div class="dropdown">
+				 						<input type="text" placeholder="Search" formControlName="search" name="search" class="form-control" #searchValue  (focus)="showDropdown()">
+				 						<div id="myDropdown" class="dropdown-content">
+										    <a (click)="searchwith(searchValue.value,'name')">Name</a>
+										    <a (click)="searchwith(searchValue.value,'unique_no')">Unique No.</a>
+									  	</div>
 								  	</div>
-							  	</div>
-			 				</div>
-			 			
+				 				</div>
+				 			
 
-			 			</div>
-			 		</div>
-			 	</div>
-			 </form>
+				 			</div>
+				 		</div>
+				 	</div>
+				 </form>
+				</div>
 			</div>
 		</div>
+		</div>
+		<notifier-container></notifier-container>
 	</div>
-	</div>
-	<notifier-container></notifier-container>
-</div>
+</app-shared>

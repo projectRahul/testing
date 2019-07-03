@@ -1,18 +1,17 @@
-<app-shared></app-shared>
+<app-shared>
+	<div class="container header_content">
+	    <div class="row">
+			<div class="col-xs-12 tab-list">
+				<div class="tabbable tabs-left">
+					<ul class="nav nav-tabs">
+						<li><a href="./home">Search Patient</a></li>
+						<li [ngClass]="(this.pageName=='information')?'active':''"><a href="home/patienttabs/information">Patient Details</a></li>
+						<li  [ngClass]="(this.pageName=='medication')?'active':''"><a href="home/patienttabs/medication">Medication</a></li>
+						<li  [ngClass]="(this.pageName=='medicationacc')?'active':''"><a href="home/patienttabs/medicationacc">Medication Accordian</a></li>
+					</ul>				
+				</div>
 
-
-<div class="container">
-    <div class="row">
-		<div class="col-xs-12 tab-list">
-			<div class="tabbable tabs-left">
-				<ul class="nav nav-tabs">
-					<li><a href="./home">Search Patient</a></li>
-					<li [ngClass]="(this.pageName=='information')?'active':''"><a href="home/patienttabs/information">Patient Details</a></li>
-					<li  [ngClass]="(this.pageName=='medication')?'active':''"><a href="home/patienttabs/medication">Medication</a></li>
-					<li  [ngClass]="(this.pageName=='medicationacc')?'active':''"><a href="home/patienttabs/medicationacc">Medication Accordian</a></li>
-				</ul>				
 			</div>
-
 		</div>
 	</div>
-</div>
+</app-shared>

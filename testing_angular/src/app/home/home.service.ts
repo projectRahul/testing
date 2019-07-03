@@ -95,4 +95,24 @@ export class HomeService {
         return this.httpClient.post<Ihome>(this.baseUrl+'getCollectionList',httpOptions)
         .pipe(catchError(this.handleError));
     }
+
+    getSampleCollection(collection_name): Observable<Ihome> {
+        let httpOptions = {
+          headers: new HttpHeaders({
+            Authorization: 'Bearer '+this.cookieService.get('token')
+          })
+        };
+        return this.httpClient.post<Ihome>(this.baseUrl+'getSampleCollection',collection_name,httpOptions)
+        .pipe(catchError(this.handleError));
+    }
+
+    uploadCsv(csvValues : Ihome): Observable<Ihome> {
+        let httpOptions = {
+          headers: new HttpHeaders({
+            Authorization: 'Bearer '+this.cookieService.get('token')
+          })
+        };
+        return this.httpClient.post<Ihome>(this.baseUrl+'csvRecord', csvValues,httpOptions)
+        .pipe(catchError(this.handleError));
+    }
 }

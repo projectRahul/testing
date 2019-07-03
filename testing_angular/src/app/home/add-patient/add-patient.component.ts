@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Ihome } from './../IHome';
+import { Ihome } from './../Ihome';
 import { HomeService } from './../home.service';
 import { NotifierService } from 'angular-notifier';
 

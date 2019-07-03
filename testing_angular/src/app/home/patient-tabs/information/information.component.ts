@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Ihome } from './../../IHome';
+import { Ihome } from './../../Ihome';
 import { HomeService } from './../../home.service';
 import { CookieService } from 'ngx-cookie-service';
 

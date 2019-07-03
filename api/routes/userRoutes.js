@@ -2,15 +2,21 @@
 var mongoose = require('mongoose'),
 Patient = mongoose.model('patient'),
 PatientMedication = mongoose.model('medication');
+// csvRecords = mongoose.model('csv_record');
 
 var jwt = require('jsonwebtoken');
 
 /*******Image Upload***********/
 var multer = require('multer');
+var path = require('path')
 // var upload = multer({dest:'upload/'});
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'upload')
+    if(path.extname(file.originalname) == '.csv'){
+      cb(null, 'upload/csv')
+    }else{
+      cb(null, 'upload')
+    }
   },
   filename: function (req, file, cb) {
       let extArray = file.mimetype.split("/");
@@ -40,6 +46,19 @@ var admin = require('../controllers/adminController');
       res.json({status : true , message : 'Collection found' , data : data});
     });
   });
+
+
+  app.post('/getSampleCollection',function(req, res, next) {
+    
+    var str = req.body.collection_name;
+    str = str.slice(0,-1);
+    var sample_collection = mongoose.model(str);
+    var attributes = [];
+    sample_collection.schema.eachPath(function(path){
+      attributes.push(path)
+    });
+    res.json({status : true , message : 'Attributes Found Successfully', data : attributes});
+  });
   
   app.post('/user/login', userList.login_user);
 
@@ -53,6 +72,7 @@ var admin = require('../controllers/adminController');
 
   app.post('/getDrugDropdown', verifyToken, patientMedication.getDrugDropdown);    
 
+/*****Image Upload***********/
   app.post('/addNewPatient',upload.single('image'),function(req, res, next) {
     if(req.body.image !=='undefined'){
       req.body.image = req.file.filename;
@@ -65,6 +85,56 @@ var admin = require('../controllers/adminController');
     }).catch(function(error){
       res.json({status : false , message : 'Patient Not Added'});
     });
+  });
+
+/********Csv Insert***************/
+  app.post('/csvRecord',upload.single('file'),function(req, res, next) {
+
+    if(req.body.file !=='undefined'){
+      req.body.file = req.file.filename;
+    }else{
+      req.body.file = '';
+    }
+    if(req.body.file == ''){
+      res.json({status : false , message : 'Someting Wrong Happens'});
+    }else{
+      
+      var csv = require('csv-parser')
+      var fs = require('fs')
+      var results = [];
+      var str = '';
+      var csvRecords = '';
+      fs.createReadStream('upload/csv/'+req.body.file)
+        .pipe(csv())
+        .on('data', (data) => results.push(data))
+        .on('end', () => {
+          
+        str = req.body.select_table;
+        str = str.slice(0,-1);
+        
+        csvRecords = mongoose.model(str);
+        
+        if(req.body.action == 'withouttruncateadd'){
+          csvRecords.insertMany(results).then(function(csv_records) {
+            res.json({status : true , message : 'Records Added Successfully'});
+          }).catch(function(error){
+            res.json({status : false , message : 'Records Not Added'});
+          });          
+        }else if(req.body.action == 'truncate'){
+           csvRecords.remove().then(function(csv_records) {
+              csvRecords.insertMany(results).then(function(csv_records) {
+                res.json({status : true , message : 'Records Added Successfully'});
+              }).catch(function(error){
+                res.json({status : false , message : 'Records Not Added'});
+              });
+           }).catch(function(error){
+             res.json({status : false , message : 'Unable to truncate records'});
+           });
+        }else{
+          res.json({status : false , message : 'No Action Selected'});
+        }
+      });
+    }
   });
 
 
