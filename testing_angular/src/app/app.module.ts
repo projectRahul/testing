@@ -19,6 +19,19 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 
 // import { MyInterceptor } from './my-interceptor';
 
+import {SocialLoginModule,AuthServiceConfig,GoogleLoginProvider/*,FacebookLoginProvider*/} from "angular-6-social-login";
+export function getAuthServiceConfigs() {
+  let config = new AuthServiceConfig(
+      [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider("your key goes here")
+        }
+      ]
+  );
+  return config;
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,9 +48,10 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     NotifierModule,
     FormsModule,
     ReactiveFormsModule,
-    HomeModule
+    HomeModule,
+    SocialLoginModule
   ],
-  providers: [UserService,CookieService/*,{provide: HTTP_INTERCEPTORS,useClass: MyInterceptor,multi: true}*/],
+  providers: [ {provide: AuthServiceConfig,useFactory: getAuthServiceConfigs},UserService,CookieService/*,{provide: HTTP_INTERCEPTORS,useClass: MyInterceptor,multi: true}*/],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

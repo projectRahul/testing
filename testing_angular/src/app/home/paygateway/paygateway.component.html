@@ -1,0 +1,28 @@
+<app-shared>
+	<div class="container header_content">
+	
+		<div class="row">
+		    <div class="Absolute-Center is-Responsive">
+		      <div class="col-sm-12"><br/>
+		      	<div class="panel panel-primary">
+				 	<div class="panel-heading">
+			 			<h3 class="panel-title"><strong class="strong-css">Paypal</strong></h3>
+			 		</div>
+			 		<div class="panel-body">
+						<lib-paypal-angular-button
+						  [locale]="locale"
+						  [env]="env"
+						  [commit]="commit"
+						  [payment]="payment"
+						  [onAuthorize]="onAuthorize"
+						  [style]="style"
+						  [funding]="funding"
+						></lib-paypal-angular-button>
+
+			 		</div>
+			 	 </div>
+			  </div>
+			</div>
+		</div>
+	</div>
+</app-shared>

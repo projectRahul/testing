@@ -62,7 +62,7 @@ export class MedicationAccComponent implements OnInit {
             newArray[count] = data[key];
             count++;
           }
-  		    console.log(newArray);
+  		    // console.log(newArray);
           
 		    	this.patient_medication_data = newArray;
           this.spinner.hide();

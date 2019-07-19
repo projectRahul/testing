@@ -12,8 +12,9 @@ import { InformationComponent } from './patient-tabs/information/information.com
 import { MedicationComponent } from './patient-tabs/medication/medication.component';
 import { AddPatientComponent } from './add-patient/add-patient.component';
 import { CsvComponent } from './csv/csv.component';
-
 import { MedicationAccComponent } from './patient-tabs/medication-acc/medication-acc.component';
+import { GalleryComponent } from './gallery/gallery.component';
+import { PaygatewayComponent } from './paygateway/paygateway.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,8 @@ const routes: Routes = [
 	{path: 'home/patienttabs/information', component : InformationComponent},
 	{path: 'home/patienttabs/medication', component : MedicationComponent},
 	{path: 'home/patienttabs/medicationacc', component : MedicationAccComponent},
-	// {path: 'change_image', component : ChangeImageComponent},
+	{path: 'home/gallery', component : GalleryComponent},
+	{path: 'home/paymentgateway', component : PaygatewayComponent},
 	{path: 'home', redirectTo : 'home', pathMatch: 'full'},
 	{path : '**',component : PageNotFoundComponent}
 

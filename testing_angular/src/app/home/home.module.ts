@@ -20,25 +20,43 @@ import { LogoutComponent } from './logout/logout.component';
 import { InformationComponent } from './patient-tabs/information/information.component';
 import { MedicationComponent } from './patient-tabs/medication/medication.component';
 import { AddPatientComponent } from './add-patient/add-patient.component';
+import { PaygatewayComponent } from './paygateway/paygateway.component';
 import { CsvComponent } from './csv/csv.component';
 import { MedicationAccComponent } from './patient-tabs/medication-acc/medication-acc.component';
 
 import {AccordionModule} from "ngx-accordion";
 
 import { StrupperPipe } from './strupper.pipe';
+import { GalleryComponent } from './gallery/gallery.component';
+
+import { NgxGalleryModule } from 'ngx-gallery';
+
+
+import { VidlibModule } from 'vidlib';
+
+import { PaypalAngularModule, PaypalAppConfigModel } from "paypal-angular";
+
+const paypalConfig: PaypalAppConfigModel = {
+  sandbox: '...YOUR-PAYPAL-CLIENT-ID-SANDBOX...',
+  production: '...YOUR-PAYPAL-CLIENT-ID-PRODUCTION...'
+};
+
+
 
 @NgModule({
   declarations: [
-  HomeComponent,
-  SharedComponent,
-  PatientTabsComponent,
-  LogoutComponent,
-  InformationComponent,
-  MedicationComponent,
-  AddPatientComponent,
-  CsvComponent,
-  MedicationAccComponent,
-  StrupperPipe
+    HomeComponent,
+    SharedComponent,
+    PatientTabsComponent,
+    LogoutComponent,
+    InformationComponent,
+    MedicationComponent,
+    AddPatientComponent,
+    CsvComponent,
+    MedicationAccComponent,
+    StrupperPipe,
+    GalleryComponent,
+    PaygatewayComponent,
   ],
   imports: [
     CommonModule,
@@ -51,7 +69,10 @@ import { StrupperPipe } from './strupper.pipe';
     BsDatepickerModule.forRoot(),
     NotifierModule,
     NgbModule,
-    AccordionModule
+    AccordionModule,
+    NgxGalleryModule,
+    VidlibModule,
+    PaypalAngularModule.forRoot(paypalConfig)
   ],
   providers: [HomeService],
 })

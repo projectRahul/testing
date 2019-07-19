@@ -5,10 +5,15 @@ PatientMedication = mongoose.model('medication');
 // csvRecords = mongoose.model('csv_record');
 
 var jwt = require('jsonwebtoken');
-
-/*******Image Upload***********/
 var multer = require('multer');
 var path = require('path')
+var csv = require('csv-parser');
+var fs = require('fs');
+var moment = require('moment');
+
+
+
+/*******Image Upload***********/
 // var upload = multer({dest:'upload/'});
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -27,6 +32,31 @@ var storage = multer.diskStorage({
 var upload = multer({ storage: storage })
 /***********************************************/
 
+
+/********Setting CronJob to remove directory content*******/
+var CronJob = require('cron').CronJob;
+var job = new CronJob({
+  cronTime: '0 */10 * * * *',//Runs cron every 10 mins
+  onTick: function() {
+    var datetime = new Date();
+    datetime = moment(datetime).format("YYYY-MM-DD HH:mm:ss");
+    console.log(datetime);
+    fs.readdir('upload/csv', (err, files) => {
+      if (err) throw err;
+      for (var file of files) {
+        fs.unlink(path.join('upload/csv', file), err => {
+          if (err) throw err;
+        });
+      }
+    });
+  },
+  start: true,
+  timeZone: 'Asia/Kolkata'
+});
+job.start();
+
+
+/**********************************************************/
 module.exports = function(app) {
 var userList = require('../controllers/userController');
 var patient = require('../controllers/patientController');
@@ -99,8 +129,6 @@ var admin = require('../controllers/adminController');
       res.json({status : false , message : 'Someting Wrong Happens'});
     }else{
       
-      var csv = require('csv-parser')
-      var fs = require('fs')
       var results = [];
       var str = '';
       var csvRecords = '';
