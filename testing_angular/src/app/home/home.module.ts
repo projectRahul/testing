@@ -37,7 +37,7 @@ import { VidlibModule } from 'vidlib';
 import { PaypalAngularModule, PaypalAppConfigModel } from "paypal-angular";
 
 const paypalConfig: PaypalAppConfigModel = {
-  sandbox: '...YOUR-PAYPAL-CLIENT-ID-SANDBOX...',
+  sandbox: '...YOUR-PAYPAL-CLIENT-ID-PRODUCTION...',
   production: '...YOUR-PAYPAL-CLIENT-ID-PRODUCTION...'
 };
 
@@ -74,6 +74,7 @@ const paypalConfig: PaypalAppConfigModel = {
     VidlibModule,
     PaypalAngularModule.forRoot(paypalConfig)
   ],
+  exports: [SharedComponent],
   providers: [HomeService],
 })
 export class HomeModule { }

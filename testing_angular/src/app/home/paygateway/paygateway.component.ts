@@ -39,6 +39,8 @@ export class PaygatewayComponent implements OnInit {
     this.onAuthorize = (data, actions) => {
       return actions.payment.execute().then((payment) => {
         // Do something when payment is successful.
+        console.log('ddd----------');
+        console.log(payment);
       });
     };
   }

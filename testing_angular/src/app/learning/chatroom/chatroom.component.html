@@ -1,0 +1,55 @@
+<app-sharedlearning>
+	<div class="container header_content">
+	  <div class="row">
+	    <div class="Absolute-Center is-Responsive">
+	      <div class="col-sm-12">
+			 	<div class="panel panel-primary">
+			 		<div class="panel-heading">
+			 			<h3 class="panel-title"><strong class="strong-css">Chat Room</strong></h3>
+			 		</div>
+    				<div class="panel-body">
+    					<div class="row">
+    						<div class="col-sm-5">
+    							<div class="form-group">
+				 					<label>Username :</label>
+				 					<input type="text" class="form-control" id="username" placeholder="Enter Username" [(ngModel)]="user"/>
+				 				</div>
+				 			</div>
+				 			<div class="col-sm-5">
+				 				<label>Select Room</label>
+				 				<select class="form-control" name="roomInput" id="roomInput" [(ngModel)]="room">
+			 						<option value="hall">Hall</option>
+			 						<option value="loby">Loby</option>
+			 						<option value="room">Room</option>
+			 					</select>
+			 				</div>
+		 					<div class="col-sm-2">
+		 						<div style="margin-top: 19px;" class="pull-right">
+					 				<button type="button" class="btn btn-primary" (click)="join()">Join</button>
+					 				<button type="button" class="btn btn-default"(click)="leave()">Leave</button>
+					 			</div>
+			 				</div>
+			 			</div>
+
+	    				<div class="row">
+	    					<div class="well" style="height: 200;padding: 15px;">
+	    						<div *ngFor="let message of messageArray">
+	    							<span><strong>{{message.user}} :</strong>{{message.message}}</span>
+	    						</div>
+	    					</div>
+	    				</div>
+	    				<div class="row">
+							<div class="col-sm-10">
+								<input type="text" class="form-control" [(ngModel)]="messageText">
+							</div>
+							<div class="col-sm-2">
+								<button class="btn btn-success pull-right" (click)="sendMessage()">Send</button>
+							</div>
+						</div>
+					</div>
+			 	</div>
+			</div>
+		</div>
+	</div>
+	</div>
+</app-sharedlearning>

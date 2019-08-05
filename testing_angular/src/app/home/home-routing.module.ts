@@ -18,19 +18,21 @@ import { PaygatewayComponent } from './paygateway/paygateway.component';
 
 
 const routes: Routes = [
-	// {path: 'home', component : HomeComponent},
-	{path: 'home/patienttabs', component : PatientTabsComponent},
-	{path: 'home/csv', component : CsvComponent},
-	{path: 'home/add-patient', component : AddPatientComponent},
-	{path: 'home/logout', component : LogoutComponent},
-	{path: 'home/patienttabs/information', component : InformationComponent},
-	{path: 'home/patienttabs/medication', component : MedicationComponent},
-	{path: 'home/patienttabs/medicationacc', component : MedicationAccComponent},
-	{path: 'home/gallery', component : GalleryComponent},
-	{path: 'home/paymentgateway', component : PaygatewayComponent},
-	{path: 'home', redirectTo : 'home', pathMatch: 'full'},
-	{path : '**',component : PageNotFoundComponent}
-
+	{
+		path : 'home' , children : [
+			{path: 'patienttabs', component : PatientTabsComponent},
+			{path: 'csv', component : CsvComponent},
+			{path: 'add-patient', component : AddPatientComponent},
+			{path: 'logout', component : LogoutComponent},
+			{path: 'patienttabs/information', component : InformationComponent},
+			{path: 'patienttabs/medication', component : MedicationComponent},
+			{path: 'patienttabs/medicationacc', component : MedicationAccComponent},
+			{path: 'gallery', component : GalleryComponent},
+			{path: 'paymentgateway', component : PaygatewayComponent},
+			{path: 'home', redirectTo : 'home', pathMatch: 'full'},
+			{path : '**',component : PageNotFoundComponent}
+		]
+	}
 ];
 
 @NgModule({

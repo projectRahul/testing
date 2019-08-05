@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Iuser } from './Iuser';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
+import {_throw} from 'rxjs/observable/throw';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { BaseurlService } from './baseurl.service';
@@ -19,7 +20,7 @@ export class UserService {
             console.error('Server Side Error: ', errorResponse);
         }
 
-        return throwError('There is a problem with the service. We are notified & working on it. Please try again later.');
+        return _throw('There is a problem with the service.');
     }
 
     addUser(user: Iuser): Observable<Iuser> {

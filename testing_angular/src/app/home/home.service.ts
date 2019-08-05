@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Ihome } from './Ihome';
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
+import {_throw} from 'rxjs/observable/throw';
 import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { BaseurlService } from '../baseurl.service';
@@ -23,7 +24,7 @@ export class HomeService {
             console.error('Server Side Error: ', errorResponse);
         }
 
-        return throwError('There is a problem with the service. We are notified & working on it. Please try again later.');
+        return _throw('There is a problem with the service.');
     }
 
     searchPatient(patient : Ihome): Observable<Ihome> {

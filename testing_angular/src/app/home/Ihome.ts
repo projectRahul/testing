@@ -5,7 +5,7 @@ export interface Ihome {
 	mobile : string;
 	password : string;
 	confirm_password : string;
-	status : string;
+	status : any;
 	message : string;
 	image : string;
 	_id : string;
