@@ -1,8 +1,10 @@
 var express = require('express'),
 app = express(),
 port = process.env.PORT || 3000;
+var http = require('http').createServer();
+// const io = require('socket.io')(server);
+var io = require('socket.io')(http).listen('3300');
 var cors = require('cors'),
-
 
 
 mongoose = require('mongoose'),
@@ -29,23 +31,26 @@ app.use(bodyParser.json());
 var routes = require('./api/routes/userRoutes'); //importing route
 routes(app); //register the route
 
-
+io.on('connection',(socket)=>{
+		console.log('connected');
+	socket.on('join',function(data){//Join
+		socket.join(data.room);
+		console.log(data.user+' Joined --> '+ data.room);
+		socket.brodcast.to(data.room).emit('new user joined',{user: data.user,message: "has joined" });
+	});
+	socket.on('leave',function(data){//Leave
+		socket.brodcast.to(data.room).emit('left room',{user: data.user,message: "has left" });
+		socket.leave(data.room);
+	});
+	socket.on('message',function(data){
+		io.in(data.room).emit('new message',{user: data.user,message: data.message });
+	});
+});
 
 //Middleware If any other route call which is not present
 app.use(function(req, res) {
   res.status(404).send({url: req.originalUrl + ' not found'})
 });
 app.listen(port);
-
-
-// const path = require('path');
-// const http = require('http');
-// app.use(express.static(__dirname+'/dist/HealthCare'));
-// app.get('/*',(req,res)=> res.sendFile(path.join(__dirname)));
-// const server = http.createServer(app);
-// server.listen(port);
-
-
-
 
 console.log(port);

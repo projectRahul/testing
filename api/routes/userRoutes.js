@@ -91,7 +91,28 @@ var admin = require('../controllers/adminController');
   });
   
   app.post('/user/login', userList.login_user);
-
+  /**********Testing**********/
+    app.post('/testcallback', function(req,res,next){
+      callBackFunction (req.body.testdata, function ( err, response ){
+         console.log(response);
+         if(err){
+           res.json(response);
+         }else{
+           res.json(response);
+         }
+      })
+       
+    });
+    function callBackFunction (data, callback){
+      // console.log(data);
+      if(data !== ''){
+        callback('',{status : true , message : data}) //if not error
+      }
+      if(data == ''){
+        callback(data,{status : false , message : 'No Action Selected'}) //if error
+      }
+    }
+  /***************************/
   app.post('/searchPatient', verifyToken, patient.searchPatient);
 
   app.post('/getPatientDetails', verifyToken, patient.getPatientDetails);    
@@ -101,6 +122,7 @@ var admin = require('../controllers/adminController');
   app.post('/getPatientMedicationAccDetails', verifyToken, patientMedicationAcc.getPatientMedicationAccDetails);
 
   app.post('/getDrugDropdown', verifyToken, patientMedication.getDrugDropdown);    
+  
 
 /*****Image Upload***********/
   app.post('/addNewPatient',upload.single('image'),function(req, res, next) {
