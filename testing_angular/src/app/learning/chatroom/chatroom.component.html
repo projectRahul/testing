@@ -33,15 +33,18 @@
 
 	    				<div class="row">
 	    					<div class="well" style="height: 200;padding: 15px;">
-	    						<div *ngFor="let message of messageArray">
-	    							<span><strong>{{message.user}} :</strong>{{message.message}}</span>
+	    						<div *ngFor="let item of messageArray">
+	    							<span><strong>{{item.user}} :</strong>{{item.message}}</span>
 	    						</div>
 	    					</div>
 	    				</div>
 	    				<div class="row">
 							<div class="col-sm-10">
-								<input type="text" class="form-control" [(ngModel)]="messageText">
+								<input type="text" class="form-control" [(ngModel)]="messageText" (keyup)="typefunction()">
 							</div>
+							
+							<span>{{messageTyping}}</span>
+
 							<div class="col-sm-2">
 								<button class="btn btn-success pull-right" (click)="sendMessage()">Send</button>
 							</div>
