@@ -36,15 +36,24 @@ io.on('connection',(socket)=>{
 	socket.on('join',function(data){//Join
 		socket.join(data.room);
 		console.log(data.user+' Joined --> '+ data.room);
-		socket.brodcast.to(data.room).emit('new user joined',{user: data.user,message: "has joined" });
+		socket.broadcast.to(data.room).emit('newUserJoined',{user: data.user,message: "has joined" });
 	});
 	socket.on('leave',function(data){//Leave
-		socket.brodcast.to(data.room).emit('left room',{user: data.user,message: "has left" });
+		console.log('left',data);
+		socket.broadcast.to(data.room).emit('left room',{user: data.user,message: "has left" });
 		socket.leave(data.room);
 	});
 	socket.on('message',function(data){
+		console.log('message',data);
 		io.in(data.room).emit('new message',{user: data.user,message: data.message });
 	});
+	socket.on('typing',function(data){
+		if(data !=''){
+			socket.broadcast.to(data.room).emit('usertyping',data.user +" is typing");
+		}else{
+			socket.broadcast.to(data.room).emit('usertyping','');
+		}
+	});	
 });
 
 //Middleware If any other route call which is not present
