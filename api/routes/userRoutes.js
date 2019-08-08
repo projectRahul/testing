@@ -62,7 +62,6 @@ var userList = require('../controllers/userController');
 var patient = require('../controllers/patientController');
 var patientMedication = require('../controllers/patientMedicationController');
 var patientMedicationAcc = require('../controllers/patientMedicationAccController');
-var admin = require('../controllers/adminController');
 
 
   app.post('/getCollectionList',function(req, res, next) {
