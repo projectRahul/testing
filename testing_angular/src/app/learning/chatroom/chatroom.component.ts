@@ -15,7 +15,6 @@ export class ChatroomComponent implements OnInit {
 	room : string;
   messageText : string;
   messageTyping :string = '';
-  typing:boolean;
   sub:any;
 
   messageArray:Array<{user:String,message:String}>=[];
@@ -55,6 +54,7 @@ export class ChatroomComponent implements OnInit {
 
   sendMessage(){
     this.socket.emit('message',{user:this.user,room:this.room,message:this.messageText});
+    this.messageText='';
   }
 
   timeoutFunction() {
