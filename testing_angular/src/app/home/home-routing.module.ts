@@ -13,8 +13,10 @@ import { MedicationComponent } from './patient-tabs/medication/medication.compon
 import { AddPatientComponent } from './add-patient/add-patient.component';
 import { CsvComponent } from './csv/csv.component';
 import { MedicationAccComponent } from './patient-tabs/medication-acc/medication-acc.component';
+import { MedicationServersidepaginComponent } from './patient-tabs/medication-serversidepagin/medication-serversidepagin.component';
 import { GalleryComponent } from './gallery/gallery.component';
 import { PaygatewayComponent } from './paygateway/paygateway.component';
+import { AddMedicationComponent } from './add-medication/add-medication.component';
 
 
 const routes: Routes = [
@@ -27,6 +29,8 @@ const routes: Routes = [
 			{path: 'patienttabs/information', component : InformationComponent},
 			{path: 'patienttabs/medication', component : MedicationComponent},
 			{path: 'patienttabs/medicationacc', component : MedicationAccComponent},
+			{path: 'patienttabs/medicationserversidepagin', component : MedicationServersidepaginComponent},
+			{path: 'add-medication', component : AddMedicationComponent},
 			{path: 'gallery', component : GalleryComponent},
 			{path: 'paymentgateway', component : PaygatewayComponent},
 			{path: 'home', redirectTo : 'home', pathMatch: 'full'},

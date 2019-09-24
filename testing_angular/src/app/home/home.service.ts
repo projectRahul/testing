@@ -57,6 +57,16 @@ export class HomeService {
         .pipe(catchError(this.handleError));
     }
 
+    getPatientMedicationDetailsPagin(rec): Observable<Ihome> {
+        let httpOptions = {
+          headers: new HttpHeaders({
+            Authorization: 'Bearer '+this.cookieService.get('token')
+          })
+        };
+        return this.httpClient.post<Ihome>(this.baseUrl+'getPatientMedicationDetailsPagin', rec, httpOptions)
+        .pipe(catchError(this.handleError));
+    }
+
     getPatientMedicationAccDetails(unique_no : Ihome): Observable<Ihome> {
         let httpOptions = {
           headers: new HttpHeaders({
@@ -114,6 +124,26 @@ export class HomeService {
           })
         };
         return this.httpClient.post<Ihome>(this.baseUrl+'csvRecord', csvValues,httpOptions)
+        .pipe(catchError(this.handleError));
+    }
+
+    addNewMedication(addMedicationValues : Ihome): Observable<Ihome> {
+        let httpOptions = {
+          headers: new HttpHeaders({
+            Authorization: 'Bearer '+this.cookieService.get('token')
+          })
+        };
+        return this.httpClient.post<Ihome>(this.baseUrl+'addNewMedication', addMedicationValues,httpOptions)
+        .pipe(catchError(this.handleError));
+    }
+
+    updateMedRecord(medRecordValues : Ihome): Observable<Ihome> {
+        let httpOptions = {
+          headers: new HttpHeaders({
+            Authorization: 'Bearer '+this.cookieService.get('token')
+          })
+        };
+        return this.httpClient.post<Ihome>(this.baseUrl+'updateMedRecord', medRecordValues,httpOptions)
         .pipe(catchError(this.handleError));
     }
 }

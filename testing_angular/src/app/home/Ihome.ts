@@ -13,4 +13,6 @@ export interface Ihome {
 	datas : any;
 	searchValue : any;
 	searchwith : any;
+	pager : any;
+	pageOfItems : any;
 }

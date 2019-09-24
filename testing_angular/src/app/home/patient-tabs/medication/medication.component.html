@@ -30,6 +30,7 @@
 				        <th class="text-center">Dose</th>
 				        <th class="text-center">Strength</th>
 				        <th class="text-center">Report Date</th>
+				        <th class="text-center">Edit</th>
 				      </tr>
 				    </thead>
 				    <tbody>
@@ -39,6 +40,7 @@
 				        <td>{{medication.dose}}</td>
 				        <td>{{medication.strength}}</td>
 				        <td>{{medication.report_date}}</td>
+				        <td><button class="btn btn-primary" data-toggle="modal" [attr.data-target]="'#modalbox'" (click)="setEditFormValue(medication.drug,medication.dose,medication.strength,medication.report_date,medication._id)">Edit</button></td>
 				      </tr>
 				    </tbody>
 				  </table>
@@ -52,13 +54,72 @@
 				        <th class="text-center">Drug</th>
 				        <th class="text-center">Strength</th>
 				        <th class="text-center">Report Date</th>
+				        <th class="text-center">Edit</th>
 				      </tr>
 				    </thead>
 				    <tbody>
 				      <th colspan="5">No Records</th>
 				    </tbody>
 				  </table>
-				</div> 				
+				</div> 	
+				<br/><br/><br/>			
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalbox" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+		        </button>
+				<h3 class="modal-title" id="exampleModalLabel">Edit Medication</h3>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" [formGroup]="editMedForm" (ngSubmit)="updateMedRecord()">
+			 	<div class="panel panel-primary">
+			 		<div class="panel-body">
+			 			<input type="hidden" id="_id" formControlName="_id" name="_id">
+			 			
+			 			<div class="form-group" [ngClass] = "{'has-error' : editMedForm.get('drug').errors  && (editMedForm.get('drug').touched || editMedForm.get('drug').dirty)}">
+			 				<label class="col-sm-2 control-label">Drug*</label>
+			 				<div class="col-sm-8">
+			 					<input type="text" id="drug" formControlName="drug" name="drug" class="form-control">
+			 					<span *ngIf="editMedForm.get('drug').errors && (editMedForm.get('drug').touched || editMedForm.get('drug').dirty)">Drug is required</span>
+			 				</div>
+			 			</div>
+			 			<div class="form-group"  [ngClass] = "{'has-error' : editMedForm.get('dose').errors  && (editMedForm.get('dose').touched || editMedForm.get('dose').dirty)}">
+			 				<label class="col-sm-2 control-label">Dose*</label>
+			 				<div class="col-sm-8">
+			 					<input type="text" id="dose" formControlName="dose" name="dose" class="form-control">
+			 					<span *ngIf="editMedForm.get('dose').errors && (editMedForm.get('dose').touched || editMedForm.get('dose').dirty)">Dose is required</span>
+			 				</div>
+			 			</div>
+			 			<div class="form-group"  [ngClass] = "{'has-error' : editMedForm.get('strength').errors  && (editMedForm.get('strength').touched || editMedForm.get('strength').dirty)}">
+			 				<label class="col-sm-2 control-label">Strength*</label>
+			 				<div class="col-sm-8">
+			 					<input type="text" id="strength" formControlName="strength" name="strength" class="form-control">
+			 					<span *ngIf="editMedForm.get('strength').errors && (editMedForm.get('strength').touched || editMedForm.get('strength').dirty)">Strength is required</span>
+			 				</div>
+			 			</div> 
+			 			<div class="form-group"  [ngClass] = "{'has-error' : editMedForm.get('report_date').errors  && (editMedForm.get('report_date').touched || editMedForm.get('report_date').dirty)}">
+			 				<label class="col-sm-2 control-label">Report Date*</label>
+			 				<div class="col-sm-8">
+			 					<input type="text" id="report_date" formControlName="report_date" name="report_date" class="form-control" bsDatepicker >
+			 					<span *ngIf="editMedForm.get('report_date').errors && (editMedForm.get('report_date').touched || editMedForm.get('report_date').dirty)">Report Date is required</span>
+			 				</div>
+			 			</div>
+			 		</div>
+			 		<div class="panel-footer">
+			 			<div class="btn-toolbar">
+				 			<button class="btn btn-primary" type="submit" [disabled]="editMedForm.invalid">Save changes</button>
+				 			<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				 		</div>
+			 		</div>
+			 	</div>
+			 </form>
 			</div>
 		</div>
 	</div>

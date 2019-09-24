@@ -4,6 +4,7 @@ import { Ihome } from './../../Ihome';
 import { HomeService } from './../../home.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { CookieService } from 'ngx-cookie-service';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-medication',
@@ -13,12 +14,15 @@ import { CookieService } from 'ngx-cookie-service';
 export class MedicationComponent implements OnInit {
   pageOfItems: number;
   p: number = 1;
-  
+
+  editMedForm : FormGroup;
+
   patient_medication_data : any; 
   dropdown_data : any; 
   unique_no_patient:any = {"unique_num":this.cookieService.get('unique_num')};
 
-  constructor(private router:Router,
+  constructor(private emf: FormBuilder,
+        private router:Router,
   			private home_service : HomeService,
         private spinner : NgxSpinnerService,
         private cookieService: CookieService
@@ -36,6 +40,13 @@ export class MedicationComponent implements OnInit {
 
   ngOnInit() {
     
+    this.editMedForm = this.emf.group({
+      _id: [''],
+      drug: ['',[Validators.required]],
+      dose: ['',[Validators.required]],
+      strength: ['',[Validators.required]],
+      report_date: ['',[Validators.required]]
+    });
 
 
   	if(this.cookieService.get('unique_num') !='0' && this.cookieService.get('unique_num')){
@@ -56,6 +67,17 @@ export class MedicationComponent implements OnInit {
       this.router.navigate(['./home']);
     }
 
+
+  }
+
+  setEditFormValue(drug,dose,strength,report_date,_id){
+    this.editMedForm.patchValue({
+      drug: drug,
+      dose: dose,
+      strength: strength,
+      report_date: report_date,
+      _id: _id,
+    });
   }
 
   pageChange(pageOfItems: number) {
@@ -80,5 +102,13 @@ export class MedicationComponent implements OnInit {
         this.spinner.hide();
        }
     })
+  }
+
+  updateMedRecord(){
+    this.home_service.updateMedRecord(this.editMedForm.value)
+      .subscribe( data => {
+        this.router.navigate(['./home/patienttabs/medication']);
+    });
+
   }
 }

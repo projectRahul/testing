@@ -92,3 +92,14 @@ function isEmpty(obj) {
   }
   return true;
 }
+
+
+// IIFE - Immediately invoked function expression (calls itself right after being initialized)
+class Foo {
+    foo: string = (function bar(){
+        console.log("testing IIFE");
+        return "value";
+    }());
+};
+
+new Foo();

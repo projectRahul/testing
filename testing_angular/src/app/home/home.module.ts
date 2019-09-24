@@ -13,7 +13,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
-import { SharedComponent } from './shared/shared.component';
+import { SharedComponent } from '../shared/shared.component';
 import { HomeService } from './home.service';
 import { PatientTabsComponent } from './patient-tabs/patient-tabs.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -23,6 +23,8 @@ import { AddPatientComponent } from './add-patient/add-patient.component';
 import { PaygatewayComponent } from './paygateway/paygateway.component';
 import { CsvComponent } from './csv/csv.component';
 import { MedicationAccComponent } from './patient-tabs/medication-acc/medication-acc.component';
+import { MedicationServersidepaginComponent } from './patient-tabs/medication-serversidepagin/medication-serversidepagin.component';
+import { AddMedicationComponent } from './add-medication/add-medication.component';
 
 import {AccordionModule} from "ngx-accordion";
 
@@ -37,7 +39,7 @@ import { VidlibModule } from 'vidlib';
 import { PaypalAngularModule, PaypalAppConfigModel } from "paypal-angular";
 
 const paypalConfig: PaypalAppConfigModel = {
-  sandbox: '...YOUR-PAYPAL-CLIENT-ID-PRODUCTION...',
+  sandbox: '...YOUR-PAYPAL-CLIENT-ID-PRODUCTION..',
   production: '...YOUR-PAYPAL-CLIENT-ID-PRODUCTION...'
 };
 
@@ -57,6 +59,8 @@ const paypalConfig: PaypalAppConfigModel = {
     StrupperPipe,
     GalleryComponent,
     PaygatewayComponent,
+    MedicationServersidepaginComponent,
+    AddMedicationComponent,
   ],
   imports: [
     CommonModule,
