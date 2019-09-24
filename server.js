@@ -2,14 +2,10 @@ var express = require('express'),
 app = express(),
 port = process.env.PORT || 3000;
 var socket = require('./api/includes/socket');
+// var twilio = require('./api/includes/twilio');
 var cors = require('cors'),
 mongoose = require('mongoose'),
-
-User = require('./api/models/userModel'), //created model loading here
-Patient = require('./api/models/patientModel'), //created model loading here
-PatientMedication = require('./api/models/patientMedicationModel'), //created model loading here
-PatientMedicationAcc = require('./api/models/patientMedicationAccModel'), //created model loading here
-csvRecord = require('./api/models/csvRecordModel'), //created model loading here
+allModel = require('./api/includes/allModels'),
 
 bodyParser = require('body-parser');
 

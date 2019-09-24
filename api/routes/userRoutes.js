@@ -10,6 +10,8 @@ var path = require('path')
 var csv = require('csv-parser');
 var fs = require('fs');
 var moment = require('moment');
+var nodemailer = require('nodemailer');
+var paginate = require('jw-paginate');
 
 
 
@@ -120,7 +122,34 @@ var patientMedicationAcc = require('../controllers/patientMedicationAccControlle
   
   app.post('/getPatientMedicationAccDetails', verifyToken, patientMedicationAcc.getPatientMedicationAccDetails);
 
-  app.post('/getDrugDropdown', verifyToken, patientMedication.getDrugDropdown);    
+  app.post('/getDrugDropdown', verifyToken, patientMedication.getDrugDropdown);  
+  
+  app.post('/addNewMedication', verifyToken, patientMedication.addNewMedication);
+    
+  app.post('/updateMedRecord', verifyToken, patientMedication.updateMedRecord);  
+
+  app.post('/getUserDetailsQR', verifyToken, userList.getUserDetailsQR);    
+
+  app.post('/getPatientMedicationDetailsPagin', function(req, res, next) {
+      const page = parseInt(req.body.page) || 1;
+      if(typeof req.body.drug !== 'undefined'){
+        req.body = {unique_num : req.body.unique_num, drug : req.body.drug};
+      }else{
+        req.body = {unique_num : req.body.unique_num};
+      }
+      PatientMedication.find(req.body).then(function(medication_data) {
+        if (medication_data == '' || medication_data == null){
+          res.json({status : false , message : 'No Medication Records Found'});
+        }else{ 
+          // page = parseInt(page) || 1;
+          const pager = paginate(medication_data.length, page);
+          const pageOfItems = medication_data.slice(pager.startIndex, pager.endIndex + 1);
+          return res.json({ pager, pageOfItems });    
+        }
+      }).catch(function(error){
+        res.json({status : false , message : 'No Medication Records Found' , error : error});
+      });
+  });
   
 
 /*****Image Upload***********/
@@ -187,6 +216,41 @@ var patientMedicationAcc = require('../controllers/patientMedicationAccControlle
   });
 
 
+  app.post('/sendmail',function(req, res, next) {
+    var subject = req.body.heading;
+    var toemail = req.body.email;
+    var message = req.body.content;
+    // var message = '<p>This is HTML content</p>';
+    // sendMail('tinymce@mailinator.com','Welcome to ExpertPHP.in',message);
+    var smtpConfig = {
+      service: 'Gmail',
+      auth: {
+        user: '*****************@gmail.com',
+        pass: '***********'
+      }
+    };
+    var transporter = nodemailer.createTransport(smtpConfig);
+    var mailOptions = {
+      from: '"TinyMce" <tinymce@mailinator.com>', // sender address
+      to: toemail, // list of receivers
+      subject: subject, // Subject line
+      text: 'Hello world ?', // plaintext body
+      html: message // html body
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+      if (error) {
+        // console.log(error);
+        res.json({status : false , message : 'Something Went Wrong'});
+      } else {
+        // console.log('Email sent: ' + info.response);
+        res.json({status : true , message : 'Mail Send Successfully'});
+      }      
+    });
+  });
+
+
+
   // Middleware Verify token
   function verifyToken(req,res,next){
     const bearerHeader = req.headers['authorization'];
@@ -206,5 +270,5 @@ var patientMedicationAcc = require('../controllers/patientMedicationAccControlle
       res.json({status : false , message : 'Authorization failed'});
     }
   }
-
+  
 };

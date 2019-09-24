@@ -35,3 +35,12 @@ exports.login_user = function(req, res) {
   	res.json({status : false , message : 'Wrong Credentials' , error : error});
   });
 };
+
+
+exports.getUserDetailsQR = function(req, res) {
+  User.find(req.body).limit(1).then(function(user) {
+  	res.json({status : true , message : 'Records Found' , data : user});
+  }).catch(function(error){
+  	res.json({status : false , message : 'No Records Found' , error : error});
+  });
+};
