@@ -34,7 +34,11 @@
 	    				<div class="row">
 	    					<div class="well" style="height: 200;padding: 15px;">
 	    						<div *ngFor="let item of messageArray">
-	    							<span><strong>{{item.user}} :</strong>{{item.message}}</span>
+	    							<span><strong>{{item.user}}
+	    									<span *ngFor="let online of item.online_user_list">
+	    										<span *ngIf="item.user == online" style="height: 10px;width: 10px;background-color: green;border-radius: 50%;display: inline-block;">*</span>
+	    									</span>
+	    							 	:</strong>{{item.message}}</span>
 	    						</div>
 	    					</div>
 	    				</div>

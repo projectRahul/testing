@@ -1,0 +1,29 @@
+<app-sharedlearning>
+	<div class="container header_content">
+	  <div class="row">
+	    <div class="Absolute-Center is-Responsive">
+	      <div class="col-sm-12">
+			<div class="panel panel-primary">
+		 		<div class="panel-heading">
+		 			<h3 class="panel-title"><strong class="strong-css">Captcha Recognition</strong></h3>
+		 		</div>
+		 		<div class="panel-body">
+		 			<div class="alert alert-info" *ngIf="show_message">
+					  <strong>Info!!!</strong> Captcha verifies successfully. Now you can perform any action you want.
+					</div>
+
+		 			<div class="form-group">
+		 				<label class="col-sm-4 control-label"></label>
+		 				<div class="col-sm-8">
+
+		 					<re-captcha (resolved)="resolved($event)" siteKey="6Le-captcha key"></re-captcha>
+
+		 				</div>
+		 			</div>
+		 		</div>
+		 	</div>
+		   </div>
+		</div>
+	</div>
+	</div>
+</app-sharedlearning>

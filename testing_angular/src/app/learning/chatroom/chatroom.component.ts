@@ -17,7 +17,7 @@ export class ChatroomComponent implements OnInit {
   messageTyping :string = '';
   sub:any;
 
-  messageArray:Array<{user:String,message:String}>=[];
+  messageArray:Array<{user:String,message:String,online_user_list:Object}>=[];
 
   constructor(private socket: Socket) { 
     this.sub = Observable.interval(2000)
